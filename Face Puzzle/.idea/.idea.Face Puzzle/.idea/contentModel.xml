@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\SR4BlackDev\.Rider2019.1\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\SR4BlackDev\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Face Puzzle.2146372514.00" t="ExcludeRecursive" />
-    <e p="C:\Users\SR4BlackDev\Desktop\UnityProduct\Face Puzzle" t="IncludeRecursive">
+    <e p="C:\Users\SR4BlackDev\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Face Puzzle.-1667716364.00" t="ExcludeRecursive" />
+    <e p="C:\Users\SR4BlackDev\Desktop\UnityProduct\Face-Puzzle\Face Puzzle" t="IncludeRecursive">
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -15,9 +15,18 @@
         <e p="_Script" t="Include">
           <e p="ChangeColor.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="Level.cs" t="Include" />
+          <e p="PuzzleState.cs" t="Include" />
           <e p="RotatePart.cs" t="Include" />
-          <e p="Rotator.cs" t="Include" />
-          <e p="TotalPart.cs" t="Include" />
+          <e p="SoundManager.cs" t="Include" />
+        </e>
+        <e p="CameraShakeFX" t="Include">
+          <e p="Demo" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="StressReceiver.cs" t="Include" />
+              <e p="TraumaInducer.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Plugins" t="Include">
           <e p="Demigiant" t="Include">

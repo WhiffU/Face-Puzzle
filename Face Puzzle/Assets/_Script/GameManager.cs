@@ -4,58 +4,123 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public TextMeshProUGUI textLevel;
     public TextMeshProUGUI textPercentage;
     public TextMeshProUGUI textWin;
     public Slider completeBar;
 
-    private RotatePart _rotatePart;
-    private TotalPart _totalPart;
+    public TextMeshProUGUI textLevel;
+    public GameObject[] levels;
+    public Button btnNextLevel;
 
+    public int levelIndex;
+    public float completePercentage;
+    public ParticleSystem vfxWin;
+    public AudioSource sfxWin;
+    public bool isWin;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     private void Start()
     {
-        _rotatePart = FindObjectOfType<RotatePart>();
-        _totalPart = FindObjectOfType<TotalPart>();
-        textLevel.text = "LEVEL: " + 1;
-        textPercentage.text = (1 / _totalPart.totalPartNeedToComplete) + "%";
+        GenerateLevel();
+        btnNextLevel.onClick.AddListener(PlayNextLevel);
+
+        //completePercentage = Mathf.Round(100 - (float) Level.Instance.rotationGoals.Length /
+        //Level.Instance.allRotatableParts.Length * 100);
+        //Debug.Log(completePercentage);
+        //textPercentage.text = completePercentage + "%";
+        textPercentage.text = 0 + "%";
+        //completeBar.value = completePercentage / 100;
         completeBar.value = 0;
     }
 
     private void Update()
     {
-        //WinConditionCheck();
+        CompleteLevelCheck();
     }
 
-    public void WinConditionCheck()
+    private void GenerateLevel()
     {
-        if ((int) _rotatePart.transform.rotation.x == 0)
+        isWin = false;
+        enabled = true;
+        CancelInvoke();
+        textLevel.text = "LEVEL: " + (levelIndex + 1);
+        //Dont delete
+        //textPercentage.text = completePercentage + "%";
+        //completeBar.value = completePercentage / 100;
+        textPercentage.text = 0 + "%";
+        completeBar.value = 0;
+        Instantiate(levels[levelIndex], transform.position, Quaternion.identity);
+        vfxWin.Stop();
+    }
+
+    private void PlayNextLevel()
+    {
+        btnNextLevel.gameObject.SetActive(false);
+        textWin.gameObject.SetActive(false);
+        Level.Instance.DestroyLevel();
+        levelIndex++;
+
+        if (levelIndex < levels.Length)
         {
-            _rotatePart.isFacingFront = true;
-            Debug.Log("You win!");
-            textPercentage.text = "100%";
-            textWin.gameObject.SetActive(true);
-            completeBar.value = 1;
-            // ChangeColor.Instance.ColorChangeToWin();
+            GenerateLevel();
         }
         else
         {
-            Debug.Log("You are not win!");
-            textWin.gameObject.SetActive(false);
-            //  ChangeColor.Instance.ColorChangeToLose();
-            completeBar.value = 0;
-            textPercentage.text = "0%";
+            levelIndex = 0;
+            GenerateLevel();
         }
     }
+
+
+    public void CompleteLevelCheck()
+    {
+        for (int i = 0; i < Level.Instance.allRotatableParts.Length; i++)
+        {
+            if (Level.Instance.allRotatableParts.All(facingFront => facingFront.isFacingFront))
+            {
+                isWin = true;
+                enabled = false;
+            }
+        }
+
+        if (isWin)
+        {
+            Invoke("StopAndShowWin", 0.5f);
+        }
+    }
+
+
+    void StopAndShowWin()
+    {
+        for (int i = 0; i < Level.Instance.allRotatableParts.Length; i++)
+        {
+            Level.Instance.allRotatableParts[i].enabled = false;
+        }
+
+        Level.Instance.imageUncompleted.gameObject.SetActive(false);
+        Level.Instance.imageCompleted.gameObject.SetActive(true);
+        textWin.gameObject.SetActive(true);
+        btnNextLevel.gameObject.SetActive(true);
+        textPercentage.text = 100 + "%";
+        completeBar.value = 1;
+        vfxWin.Play();
+        sfxWin.Play();
+    }
+
+    //    public void SaveLevel()
+//    {
+//        PlayerPrefs.SetInt("level", levelIndex);
+//    }
+//
+//    private void LoadLevel()
+//    {
+//        levelIndex = PlayerPrefs.GetInt("level");
+//    }
 }

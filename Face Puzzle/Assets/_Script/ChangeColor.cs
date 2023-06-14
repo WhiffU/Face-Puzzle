@@ -5,24 +5,29 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
-    public Material winMaterial;
-    public Material loseMaterial;
+    public MeshRenderer[] meshRenderer;
+    public Material correctMaterial;
+    public Material incorrectMaterial;
     public static ChangeColor Instance;
-
-
 
     private void Awake()
     {
         Instance = this;
-        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     public void ColorChangeToWin()
     {
-        meshRenderer.material = winMaterial;
-    }public void ColorChangeToLose()
+        for (int i = 0; i < meshRenderer.Length; i++)
+        {
+            meshRenderer[i].material = correctMaterial;
+        }
+    }
+
+    public void ColorChangeToLose()
     {
-        meshRenderer.material = loseMaterial;
+        for (int i = 0; i < meshRenderer.Length; i++)
+        {
+            meshRenderer[i].material = incorrectMaterial;
+        }
     }
 }
