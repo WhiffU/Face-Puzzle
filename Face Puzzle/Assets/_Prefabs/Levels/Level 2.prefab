@@ -58,6 +58,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &1676240085885719106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &4927917199670359877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &8553887927978913878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,8 +354,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620174347628170165}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -90}
+  m_LocalScale: {x: 40, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 6153590145926797390}
   m_RootOrder: 4
@@ -605,6 +608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404825935315444799}
+  - component: {fileID: 9041943782556567854}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -629,6 +633,21 @@ Transform:
   m_Father: {fileID: 6153590145926797390}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9041943782556567854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069019591426440837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da35373dab7197d4a81550fb2469360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialParts: []
+  rotatableParts: []
+  specialRotatePart: {fileID: 0}
 --- !u!1 &1356461658866187339
 GameObject:
   m_ObjectHideFlags: 0

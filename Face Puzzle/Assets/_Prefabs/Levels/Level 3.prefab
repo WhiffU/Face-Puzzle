@@ -329,6 +329,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &6542614924060689058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +406,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &5554630470870663154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +483,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &8375734116506171978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,6 +1662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7408212825523577448}
+  - component: {fileID: 695414260985595431}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Untagged
@@ -1683,6 +1687,21 @@ Transform:
   m_Father: {fileID: 3316726807770434382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &695414260985595431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891594061971405010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da35373dab7197d4a81550fb2469360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialParts: []
+  rotatableParts: []
+  specialRotatePart: {fileID: 0}
 --- !u!1 &8020876193735353775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,8 +1919,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8356954260785354933}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -90}
+  m_LocalScale: {x: 40, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 3316726807770434382}
   m_RootOrder: 4

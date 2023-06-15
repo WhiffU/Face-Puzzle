@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class PuzzleState : MonoBehaviour
 {
+    public static PuzzleState Instance;
     public GameObject[] specialParts;
     public RotatePart[] rotatableParts;
     public RotatePart specialRotatePart;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {

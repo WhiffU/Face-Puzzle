@@ -24,10 +24,12 @@ public class RotatePart : MonoBehaviour
     public bool isTouchable;
 
     public ChangeColor changeColor;
+    public PuzzleState puzzleState;
 
     private void Start()
     {
         changeColor = GetComponent<ChangeColor>();
+        puzzleState = GetComponentInParent<PuzzleState>();
     }
 
     private void Update()
@@ -134,6 +136,12 @@ public class RotatePart : MonoBehaviour
                 {
                     target.transform.Rotate(-180, 0, 0, Space.World);
                 }
+
+                else
+                {
+                    puzzleState.transform.DOShakePosition(0.25f, 0.01f, 20, 1, false);
+                    Handheld.Vibrate();
+                }
             }
 
             if (canSwipeLeftRight && isTouching)
@@ -147,27 +155,32 @@ public class RotatePart : MonoBehaviour
                 {
                     target.transform.Rotate(0, -180, 0);
                 }
+                else
+                {
+                    puzzleState.transform.DOShakePosition(0.25f, 0.01f, 20, 1, false);
+                    Handheld.Vibrate();
+                }
             }
         }
     }
 
     bool SwipeDown(Vector2 swipe)
     {
-        return currentSwipe.y < 0;
+        return currentSwipe.y < 0 && -0.5f < currentSwipe.x && currentSwipe.x < 0.5f;
     }
 
     bool SwipeUp(Vector2 swipe)
     {
-        return currentSwipe.y > 0;
+        return currentSwipe.y > 0 && -0.5f < currentSwipe.x && currentSwipe.x < 0.5f;
     }
 
     bool SwipeLeft(Vector2 swipe)
     {
-        return currentSwipe.x < 0;
+        return currentSwipe.x < 0 && -0.5f < currentSwipe.y && currentSwipe.y < 0.5f;
     }
 
     bool SwipeRight(Vector2 swipe)
     {
-        return currentSwipe.x > 0;
+        return currentSwipe.x > 0 && -0.5f < currentSwipe.y && currentSwipe.y < 0.5f;
     }
 }
