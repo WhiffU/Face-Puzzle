@@ -1,49 +1,73 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using DG.Tweening;
 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public TextMeshProUGUI textPercentage;
-    public TextMeshProUGUI textWin;
-    public Slider completeBar;
+    [SerializeField] private TextMeshProUGUI textPercentage;
+    [SerializeField] private TextMeshProUGUI textWin;
+    [SerializeField] private Slider completeBar;
 
-    public TextMeshProUGUI textLevel;
-    public GameObject[] levels;
-    public Button btnNextLevel;
+    [SerializeField] private TextMeshProUGUI textLevel;
+    [SerializeField] private GameObject[] levels;
+    [SerializeField] private Button btnNextLevel;
+    [SerializeField] private Button btnHint;
 
-    public int levelIndex;
-    public float completePercentage;
-    public ParticleSystem vfxWin;
-    public AudioSource sfxWin;
-    public bool isWin;
+    [SerializeField] private int levelIndex;
+    [SerializeField] private float completePercentage;
+    [SerializeField] private ParticleSystem vfxWin;
+    [SerializeField] private AudioSource sfxWin;
+    [SerializeField] private bool isWin;
+    [SerializeField] private RotatePart[] hintPlaces;
+    [SerializeField] private GameObject currentLevel;
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         GenerateLevel();
         btnNextLevel.onClick.AddListener(PlayNextLevel);
+        btnHint.onClick.AddListener(PlayHint);
+    }
 
-        //completePercentage = Mathf.Round(100 - (float) Level.Instance.rotationGoals.Length /
-        //Level.Instance.allRotatableParts.Length * 100);
-        //Debug.Log(completePercentage);
-        //textPercentage.text = completePercentage + "%";
-        textPercentage.text = 0 + "%";
-        //completeBar.value = completePercentage / 100;
-        completeBar.value = 0;
+
+    private void PlayHint()
+    {
+        hintPlaces = currentLevel.GetComponentsInChildren<RotatePart>();
+
+        for (int i = 0; i < hintPlaces.Length; i++)
+        {
+            if (!hintPlaces[i].isFacingFront)
+            {
+                Debug.Log("Hint: " + hintPlaces[i].gameObject.name);
+                hintPlaces[i].gameObject.transform
+                    .DOShakePosition(0.25f, 0.01f, 20, 1, false);
+            }
+        }
     }
 
     private void Update()
     {
+        LevelPercentageCheck();
         CompleteLevelCheck();
     }
+
+    private void LevelPercentageCheck()
+    {
+        completePercentage = PuzzleState.Instance.result;
+        textPercentage.text = (completePercentage * 100).ToString("0") + "%";
+        completeBar.value = completePercentage;
+    }
+
 
     private void GenerateLevel()
     {
@@ -54,9 +78,7 @@ public class GameManager : MonoBehaviour
         //Dont delete
         //textPercentage.text = completePercentage + "%";
         //completeBar.value = completePercentage / 100;
-        textPercentage.text = 0 + "%";
-        completeBar.value = 0;
-        Instantiate(levels[levelIndex], transform.position, Quaternion.identity);
+        currentLevel = Instantiate(levels[levelIndex], transform.position, Quaternion.identity);
         vfxWin.Stop();
     }
 
@@ -108,8 +130,6 @@ public class GameManager : MonoBehaviour
         Level.Instance.imageCompleted.gameObject.SetActive(true);
         textWin.gameObject.SetActive(true);
         btnNextLevel.gameObject.SetActive(true);
-        textPercentage.text = 100 + "%";
-        completeBar.value = 1;
         vfxWin.Play();
         sfxWin.Play();
     }

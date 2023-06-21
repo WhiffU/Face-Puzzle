@@ -536,7 +536,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 256
-  isFacingFront: 0
+  isFacingFront: 1
   speed: 500
   canSwipeUpDown: 1
   canSwipeLeftRight: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  isFacingFront: 0
+  isFacingFront: 1
   speed: 500
   canSwipeUpDown: 1
   canSwipeLeftRight: 0
@@ -1287,7 +1287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6941942048712186144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.010082897}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2359816773619174454}
@@ -1311,6 +1311,14 @@ MonoBehaviour:
   specialParts: []
   rotatableParts: []
   specialRotatePart: {fileID: 0}
+  allParts:
+  - {fileID: 2359816773619174455}
+  - {fileID: 2359816772355762194}
+  - {fileID: 2359816772373810457}
+  isFunctionCalled: 0
+  percentTotal: 0
+  result: 0
+  frontTimeCounter: []
 --- !u!1 &7060872229371881220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7240085430283328355}
   m_Layer: 0
-  m_Name: Rotate Target
+  m_Name: Rotate Target Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1527,7 +1535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7261428809747852844}
   m_Layer: 0
-  m_Name: Rotate Target 1
+  m_Name: Rotate Target Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1557,7 +1565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3769780061773073548}
   m_Layer: 0
-  m_Name: Rotate Target 2
+  m_Name: Rotate Target Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

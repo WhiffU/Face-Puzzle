@@ -7,8 +7,8 @@ public class RotatePart : MonoBehaviour
     public GameObject target;
     public bool isTouching;
     public LayerMask layerMask;
-
     public bool isFacingFront;
+    public static RotatePart Instance;
 
     private Vector2 firstPressPos;
     private Vector2 secondPressPos;
@@ -26,6 +26,11 @@ public class RotatePart : MonoBehaviour
     public ChangeColor changeColor;
     public PuzzleState puzzleState;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         changeColor = GetComponent<ChangeColor>();
@@ -36,8 +41,14 @@ public class RotatePart : MonoBehaviour
     {
         Drag();
         Swipe();
-        CheckIfFacingFront();
         CheckIfIsTouchable();
+        CheckIfFacingFront();
+        ChangeColor();
+       
+    }
+
+    private void ChangeColor()
+    {
         if (isFacingFront)
         {
             changeColor.ColorChangeToWin();
@@ -58,9 +69,9 @@ public class RotatePart : MonoBehaviour
 
     private void CheckIfFacingFront()
     {
-        var roundX = Mathf.Round(target.transform.rotation.x) == 0;
-        var roundY = Mathf.Round(target.transform.rotation.y) == 0;
-        var roundZ = Mathf.Round(target.transform.rotation.z) == 0;
+        var roundX = (int) (target.transform.rotation.x) == 0;
+        var roundY = (int) (target.transform.rotation.y) == 0;
+        var roundZ = (int) (target.transform.rotation.z) == 0;
         if (roundX && roundY && roundZ)
         {
             isFacingFront = true;
@@ -112,10 +123,7 @@ public class RotatePart : MonoBehaviour
             firstPressPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, layerMask))
-            {
-                isTouching = true;
-            }
+            if (Physics.Raycast(ray, out hit, 100, layerMask) ? isTouching = true : isTouching = false) ;
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -161,6 +169,22 @@ public class RotatePart : MonoBehaviour
                     Handheld.Vibrate();
                 }
             }
+        }
+
+        SetFrontCounter();
+    }
+
+    private void SetFrontCounter()
+    {
+        if (puzzleState.isFunctionCalled)
+        {
+            puzzleState.isFunctionCalled = false;
+        }
+
+        if (!puzzleState.isFunctionCalled)
+        {
+            puzzleState.frontTimeCounter.Clear();
+            puzzleState.UpdatePercentage();
         }
     }
 

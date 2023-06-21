@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2166959417575492427}
   m_Layer: 0
-  m_Name: Rotate Goal 3
+  m_Name: Rotate Goal Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2210882908985261572}
   m_Layer: 0
-  m_Name: Rotate Goal
+  m_Name: Rotate Goal Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,7 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5658671649463806443}
   m_Layer: 0
-  m_Name: Rotate Goal 2
+  m_Name: Rotate Goal Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,6 +865,16 @@ MonoBehaviour:
   - {fileID: 6127079177127732929}
   - {fileID: 6127079177681190230}
   specialRotatePart: {fileID: 6127079177078425562}
+  allParts:
+  - {fileID: 6127079178494660881}
+  - {fileID: 6127079177127732929}
+  - {fileID: 6127079177681190230}
+  - {fileID: 6127079177078425562}
+  isFunctionCalled: 0
+  frontTime: 0
+  percentTotal: 0
+  result: 0
+  frontTimeCounter: []
 --- !u!1 &4199644492211386933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,6 +1204,7 @@ MonoBehaviour:
   canSwipeLeftRight: 0
   isTouchable: 0
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &8814889050575961427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,6 +1280,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 1
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &276365111390347021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,7 +1308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6127079177474097736}
   m_Layer: 0
-  m_Name: Rotate Goal 4
+  m_Name: Rotate Goal Special
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,6 +1385,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 0
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &6542319580183315852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,6 +1460,7 @@ MonoBehaviour:
   canSwipeLeftRight: 1
   isTouchable: 0
   changeColor: {fileID: 0}
+  puzzleState: {fileID: 0}
 --- !u!114 &6793703061543071158
 MonoBehaviour:
   m_ObjectHideFlags: 0
