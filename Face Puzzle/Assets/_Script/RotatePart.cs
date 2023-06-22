@@ -23,8 +23,8 @@ public class RotatePart : MonoBehaviour
 
     public bool isTouchable;
 
-    public ChangeColor changeColor;
-    public PuzzleState puzzleState;
+    [SerializeField] private ChangeColor changeColor;
+    [SerializeField] private PuzzleState puzzleState;
 
     private void Awake()
     {
@@ -44,7 +44,6 @@ public class RotatePart : MonoBehaviour
         CheckIfIsTouchable();
         CheckIfFacingFront();
         ChangeColor();
-       
     }
 
     private void ChangeColor()

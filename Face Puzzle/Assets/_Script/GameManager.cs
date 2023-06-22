@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,10 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float completePercentage;
     [SerializeField] private ParticleSystem vfxWin;
     [SerializeField] private AudioSource sfxWin;
+
     [SerializeField] private bool isWin;
+
     [SerializeField] private RotatePart[] hintPlaces;
     [SerializeField] private GameObject currentLevel;
-
 
     private void Awake()
     {
@@ -39,11 +41,22 @@ public class GameManager : MonoBehaviour
         btnHint.onClick.AddListener(PlayHint);
     }
 
-
     private void PlayHint()
     {
-        hintPlaces = currentLevel.GetComponentsInChildren<RotatePart>();
+        //Hint by restart level
+        Level.Instance.DestroyLevel();
+        currentLevel = Instantiate(levels[levelIndex], transform.position, Quaternion.identity);
 
+
+        //Hint by shake
+
+        Invoke("HintByShake", 0.5f);
+        btnHint.gameObject.SetActive(false);
+    }
+
+    private void HintByShake()
+    {
+        hintPlaces = currentLevel.GetComponentsInChildren<RotatePart>();
         for (int i = 0; i < hintPlaces.Length; i++)
         {
             if (!hintPlaces[i].isFacingFront)
@@ -85,6 +98,7 @@ public class GameManager : MonoBehaviour
     private void PlayNextLevel()
     {
         btnNextLevel.gameObject.SetActive(false);
+        btnHint.gameObject.SetActive(true);
         textWin.gameObject.SetActive(false);
         Level.Instance.DestroyLevel();
         levelIndex++;
@@ -130,6 +144,7 @@ public class GameManager : MonoBehaviour
         Level.Instance.imageCompleted.gameObject.SetActive(true);
         textWin.gameObject.SetActive(true);
         btnNextLevel.gameObject.SetActive(true);
+        btnHint.gameObject.SetActive(false);
         vfxWin.Play();
         sfxWin.Play();
     }

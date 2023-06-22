@@ -4,9 +4,11 @@
     <e p="C:\Users\SR4BlackDev\.Rider2019.1\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\SR4BlackDev\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_Face Puzzle.-1667716364.00" t="ExcludeRecursive" />
     <e p="C:\Users\SR4BlackDev\Desktop\UnityProduct\Face-Puzzle\Face Puzzle" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="___www.unityassetcollection.com___.txt" t="Include" />
         <e p="_Fonts" t="Include">
           <e p="Lilita_One" t="Include">
             <e p="OFL.txt" t="Include" />
@@ -44,6 +46,17 @@
             <e p="World_Bar.cs" t="Include" />
             <e p="World_Mesh.cs" t="Include" />
             <e p="World_Sprite.cs" t="Include" />
+          </e>
+        </e>
+        <e p="FlatKit" t="Include">
+          <e p="Utils" t="Include">
+            <e p="Readme" t="Include">
+              <e p="Editor" t="Include">
+                <e p="FlatKitReadme.cs" t="Include" />
+                <e p="NetworkManager.cs" t="Include" />
+                <e p="ReadmeEditor.cs" t="Include" />
+              </e>
+            </e>
           </e>
         </e>
         <e p="Plugins" t="Include">

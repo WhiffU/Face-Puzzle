@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,17 +5,17 @@ using UnityEngine;
 public class PuzzleState : MonoBehaviour
 {
     public static PuzzleState Instance;
-    public GameObject[] specialParts;
-    public RotatePart[] rotatableParts;
-    public RotatePart specialRotatePart;
-
-    public RotatePart[] allParts;
     public bool isFunctionCalled = false;
-    private float frontTime;
-    public float percentTotal;
     public float result;
-
     public List<float> frontTimeCounter = new List<float>();
+    
+    [SerializeField] private GameObject[] specialParts;
+    [SerializeField] private RotatePart[] rotatableParts;
+    [SerializeField] private RotatePart specialRotatePart;
+    [SerializeField] private RotatePart[] allParts;
+    [SerializeField] private float frontTime;
+    [SerializeField] private float percentTotal;
+   
 
     private void Awake()
     {
